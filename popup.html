@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Jira Copy</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Jira Copy</h1>
+    <p class="subtitle">Right-click on any Jira page &rarr; Jira Copy</p>
+
+    <label class="group-label">Base URLs</label>
+    <div id="urlList" class="url-list"></div>
+
+    <div class="add-url">
+      <input type="text" id="newUrl" placeholder="https://company.atlassian.net" />
+      <button id="addBtn">Add</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
