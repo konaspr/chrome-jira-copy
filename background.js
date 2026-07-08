@@ -1,4 +1,5 @@
 const FORMATS = [
+  { id: 'jira-copy-key-lower', title: '<key>' },
   { id: 'jira-copy-key', title: '<Key>' },
   { id: 'jira-copy-key-summary', title: '<Key> Summary' },
   { id: 'jira-copy-key-summary-url', title: '<Key> Summary Url' },
@@ -90,9 +91,17 @@ const createContextMenu = () => {
           contexts: ['page'],
         });
 
-        if (i === 2) {
+        if (i === 0) {
           chrome.contextMenus.create({
-            id: 'jira-copy-sep',
+            id: 'jira-copy-sep1',
+            parentId: 'jira-copy-parent',
+            type: 'separator',
+            contexts: ['page'],
+          });
+        }
+        if (i === 3) {
+          chrome.contextMenus.create({
+            id: 'jira-copy-sep2',
             parentId: 'jira-copy-parent',
             type: 'separator',
             contexts: ['page'],
@@ -140,6 +149,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
   handleFormatsWithSummary(tab, fmt, ticketKey).then((summary) => {
     switch (fmt.id) {
+      case 'jira-copy-key-lower':
+        copy(tab.id, ticketKey.toLowerCase());
+        break;
       case 'jira-copy-key':
         copy(tab.id, ticketKey);
         break;
